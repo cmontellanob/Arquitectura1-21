@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="composite">
+  <ClassDiagramComponents>
+    <Class name="Composite" package="composite" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProductoAbstracto" package="composite" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="protected"/>
+        <Field name="precio" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="double" name="precio"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getPrecio" returnType="double" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="double" name="precio"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProductoCompuesto" package="composite" visibility="public" xPosition="213.0" yPosition="338.0">
+      <Fields>
+        <Field name="productos" type="List&lt;ProductoAbstracto&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPrecio" returnType="double" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="double" name="price"/>
+        </Method>
+        <Method name="addProducto" returnType="void" visibility="public">
+          <Argument type="ProductoAbstracto" name="producto"/>
+        </Method>
+        <Method name="removeProduct" returnType="boolean" visibility="public">
+          <Argument type="ProductoAbstracto" name="producto"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProductoSimple" package="composite" visibility="public" xPosition="682.0" yPosition="338.0">
+      <Fields>
+        <Field name="marca" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="String" name="marca"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getMarca" returnType="String" visibility="public"/>
+        <Method name="setMarca" returnType="void" visibility="public">
+          <Argument type="String" name="marca"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Venta" package="composite" visibility="public" xPosition="858.0" yPosition="-7.0">
+      <Fields>
+        <Field name="idventa" type="long" visibility="private"/>
+        <Field name="cliente" type="String" visibility="private"/>
+        <Field name="fechahora" type="Calendar" visibility="private"/>
+        <Field name="productos" type="ArrayList&lt;ProductoAbstracto&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="long" name="idventa"/>
+          <Argument type="String" name="cliente"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCliente" returnType="String" visibility="public"/>
+        <Method name="setCliente" returnType="void" visibility="public">
+          <Argument type="String" name="cliente"/>
+        </Method>
+        <Method name="getFechahora" returnType="Calendar" visibility="public"/>
+        <Method name="setFechahora" returnType="void" visibility="public">
+          <Argument type="Calendar" name="fechahora"/>
+        </Method>
+        <Method name="getPrecio" returnType="double" visibility="public"/>
+        <Method name="addProducto" returnType="void" visibility="public">
+          <Argument type="ProductoAbstracto" name="producto"/>
+        </Method>
+        <Method name="removeProducto" returnType="void" visibility="public">
+          <Argument type="ProductoAbstracto" name="producto"/>
+        </Method>
+        <Method name="imprimirVenta" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="composite.ProductoCompuesto" target="composite.ProductoAbstracto"/>
+    <HasRelation name="productos" source="composite.Venta" target="composite.ProductoAbstracto" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;ProductoAbstracto&gt;"/>
+    <UseRelation source="composite.ProductoCompuesto" target="composite.ProductoAbstracto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="productos" source="composite.ProductoCompuesto" target="composite.ProductoAbstracto" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProductoAbstracto&gt;"/>
+    <IsRelation name="is" source="composite.ProductoSimple" target="composite.ProductoAbstracto"/>
+    <UseRelation source="composite.Venta" target="composite.ProductoAbstracto" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

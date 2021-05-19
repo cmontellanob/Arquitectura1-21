@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="adapter">
+  <ClassDiagramComponents>
+    <Class name="Adapter" package="adapter" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Motor" package="adapter" visibility="public" isAbstract="true" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="encender" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="acelerar" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="apagar" returnType="void" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="MotorComun" package="adapter" visibility="public" xPosition="582.0" yPosition="303.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="encender" returnType="void" visibility="public"/>
+        <Method name="acelerar" returnType="void" visibility="public"/>
+        <Method name="apagar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MotorEconomico" package="adapter" visibility="public" xPosition="889.0" yPosition="286.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="encender" returnType="void" visibility="public"/>
+        <Method name="acelerar" returnType="void" visibility="public"/>
+        <Method name="apagar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MotorElectrico" package="adapter" visibility="public" xPosition="8.0" yPosition="274.0">
+      <Fields>
+        <Field name="conectado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="conectar" returnType="void" visibility="public"/>
+        <Method name="activar" returnType="void" visibility="public"/>
+        <Method name="moverMasRapido" returnType="void" visibility="public"/>
+        <Method name="detener" returnType="void" visibility="public"/>
+        <Method name="desconectar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MotorElectricoAdapter" package="adapter" visibility="public" xPosition="335.0" yPosition="303.0">
+      <Fields>
+        <Field name="motorElectrico" type="MotorElectrico" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="encender" returnType="void" visibility="public"/>
+        <Method name="acelerar" returnType="void" visibility="public"/>
+        <Method name="apagar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="adapter.MotorComun" target="adapter.Motor"/>
+    <IsRelation name="is" source="adapter.MotorEconomico" target="adapter.Motor"/>
+    <HasRelation name="motorElectrico" source="adapter.MotorElectricoAdapter" target="adapter.MotorElectrico" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="adapter.MotorElectricoAdapter" target="adapter.Motor"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

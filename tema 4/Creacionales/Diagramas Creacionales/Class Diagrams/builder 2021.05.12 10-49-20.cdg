@@ -31,7 +31,7 @@
         <Method name="addCondimentos" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Sandwich" package="builder" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="Sandwich" package="builder" visibility="public" xPosition="644.0" yPosition="253.0">
       <Fields>
         <Field name="tipopan" type="TipoPan" visibility="public"/>
         <Field name="estostado" type="boolean" visibility="public"/>
@@ -46,29 +46,7 @@
         <Method name="Mostrar" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Enum name="TipoPan" package="builder" visibility="public" xPosition="1220.0" yPosition="20.0">
-      <Literals>
-        <Literal name="Blanco"/>
-        <Literal name="Integral"/>
-      </Literals>
-    </Enum>
-    <Enum name="TipoCarne" package="builder" visibility="public" xPosition="1520.0" yPosition="20.0">
-      <Literals>
-        <Literal name="Pavo"/>
-        <Literal name="Jamon"/>
-        <Literal name="Pollo"/>
-        <Literal name="Salame"/>
-      </Literals>
-    </Enum>
-    <Enum name="TipoQueso" package="builder" visibility="public" xPosition="1820.0" yPosition="20.0">
-      <Literals>
-        <Literal name="Americano"/>
-        <Literal name="Swiss"/>
-        <Literal name="Cheddar"/>
-        <Literal name="Provolone"/>
-      </Literals>
-    </Enum>
-    <Class name="SandwichBuilder" package="builder" visibility="public" isAbstract="true" xPosition="2120.0" yPosition="20.0">
+    <Class name="SandwichBuilder" package="builder" visibility="public" isAbstract="true" xPosition="1276.0" yPosition="179.0">
       <Fields>
         <Field name="sandwich" type="Sandwich" visibility="protected"/>
       </Fields>
@@ -106,17 +84,39 @@
         <Method name="addCondimentos" returnType="void" visibility="public"/>
       </Methods>
     </Class>
+    <Enum name="TipoPan" package="builder" visibility="public" xPosition="919.0" yPosition="673.0">
+      <Literals>
+        <Literal name="Blanco"/>
+        <Literal name="Integral"/>
+      </Literals>
+    </Enum>
+    <Enum name="TipoCarne" package="builder" visibility="public" xPosition="1087.0" yPosition="425.0">
+      <Literals>
+        <Literal name="Pavo"/>
+        <Literal name="Jamon"/>
+        <Literal name="Pollo"/>
+        <Literal name="Salame"/>
+      </Literals>
+    </Enum>
+    <Enum name="TipoQueso" package="builder" visibility="public" xPosition="943.0" yPosition="157.0">
+      <Literals>
+        <Literal name="Americano"/>
+        <Literal name="Swiss"/>
+        <Literal name="Cheddar"/>
+        <Literal name="Provolone"/>
+      </Literals>
+    </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="tipocarne" source="builder.Sandwich" target="builder.TipoCarne" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="builder.SandwichMaker" target="builder.Sandwich" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="sandwich" source="builder.SandwichBuilder" target="builder.Sandwich" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="builder" source="builder.SandwichMaker" target="builder.SandwichBuilder" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="builder.SandwichBuilder" target="builder.Sandwich" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="tipoqueso" source="builder.Sandwich" target="builder.TipoQueso" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="builder.ClubSandwichBuilder" target="builder.SandwichBuilder"/>
     <HasRelation name="tipopan" source="builder.Sandwich" target="builder.TipoPan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="builder.SuperSandwichBuilder" target="builder.SandwichBuilder"/>
-    <HasRelation name="builder" source="builder.SandwichMaker" target="builder.SandwichBuilder" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="builder.SandwichMaker" target="builder.Sandwich" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tipocarne" source="builder.Sandwich" target="builder.TipoCarne" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tipoqueso" source="builder.Sandwich" target="builder.TipoQueso" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="builder.MiSandwichBuilder" target="builder.SandwichBuilder"/>
   </ClassDiagramRelations>
 </ClassDiagram>
