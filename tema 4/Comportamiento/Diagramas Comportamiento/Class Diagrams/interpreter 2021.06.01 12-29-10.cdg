@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="interpreter">
+  <ClassDiagramComponents>
+    <Class name="Contexto" package="interpreter" visibility="public" xPosition="21.0" yPosition="163.0">
+      <Fields>
+        <Field name="siguienteOp" type="String" visibility="private"/>
+        <Field name="operador" type="int" visibility="private"/>
+        <Field name="resultado" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getInteger" returnType="int" visibility="public">
+          <Argument type="String" name="in"/>
+        </Method>
+        <Method name="setOperador" returnType="void" visibility="public">
+          <Argument type="int" name="operador"/>
+        </Method>
+        <Method name="setOperacion" returnType="void" visibility="public">
+          <Argument type="String" name="operacion"/>
+        </Method>
+        <Method name="calcular" returnType="void" visibility="public"/>
+        <Method name="getResultado" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ExpresionNumerica" package="interpreter" visibility="public" xPosition="298.0" yPosition="413.0">
+      <Fields>
+        <Field name="valor" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="valor"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="interprete" returnType="void" visibility="public">
+          <Argument type="Contexto" name="contexto"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ExpresionOperacion" package="interpreter" visibility="public" xPosition="623.0" yPosition="368.0">
+      <Fields>
+        <Field name="operacion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="operacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="interprete" returnType="void" visibility="public">
+          <Argument type="Contexto" name="contexto"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Interpreter" package="interpreter" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="IExpresion" package="interpreter" visibility="public" xPosition="513.0" yPosition="163.0">
+      <Methods>
+        <Method name="interprete" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="Contexto" name="contexto"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="interpreter.IExpresion" target="interpreter.Contexto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="interpreter.ExpresionNumerica" target="interpreter.Contexto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="interpreter.ExpresionNumerica" target="interpreter.IExpresion"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="interpreter.ExpresionOperacion" target="interpreter.IExpresion"/>
+    <UseRelation source="interpreter.ExpresionOperacion" target="interpreter.Contexto" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
